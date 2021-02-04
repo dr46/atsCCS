@@ -1,0 +1,82 @@
+# s02.R
+
+# Directed acyclic graphs
+
+library(bnlearn)
+
+bl <- read.csv("ds/blacklist.csv", header = T)
+names(bl) <- c("from", "to")
+
+a <- data.frame(read.csv("ds/a.csv"))
+a[] <- lapply(a, function(x) if(is.integer(x)) as.numeric(x) else x)
+ga <- tabu(a, blacklist = bl)
+pdf("pics/a.pdf")
+graphviz.plot(ga, main = "Australia Full")
+dev.off()
+rm(a, ga)
+
+a1 <- data.frame(read.csv("ds/a1.csv"))
+a1[] <- lapply(a1, function(x) if(is.integer(x)) as.numeric(x) else x)
+ga1 <- tabu(a1)
+pdf("pics/a1.pdf")
+graphviz.plot(ga1, main = "Australia Time 1")
+dev.off()
+rm(a1, ga1)
+
+a2 <- data.frame(read.csv("ds/a2.csv"))
+a2[] <- lapply(a2, function(x) if(is.integer(x)) as.numeric(x) else x)
+ga2 <- tabu(a2)
+pdf("pics/a2.pdf")
+graphviz.plot(ga2, main = "Australia Time 2")
+dev.off()
+rm(a2, ga2)
+
+c <- na.omit(data.frame(read.csv("ds/c.csv")))
+c[] <- lapply(c, function(x) if(is.integer(x)) as.numeric(x) else x)
+gc <- tabu(c, blacklist = bl)
+pdf("pics/c.pdf")
+graphviz.plot(gc, main = "Canada Full")
+dev.off()
+rm(c, gc)
+
+c1 <- na.omit(data.frame(read.csv("ds/c1.csv")))
+c1[] <- lapply(c1, function(x) if(is.integer(x)) as.numeric(x) else x)
+gc1 <- tabu(c1)
+pdf("pics/c1.pdf")
+graphviz.plot(gc1, main = "Canada Time 1")
+dev.off()
+rm(c1, gc1)
+
+c2 <- na.omit(data.frame(read.csv("ds/c2.csv")))
+c2[] <- lapply(c2, function(x) if(is.integer(x)) as.numeric(x) else x)
+gc2 <- tabu(c2)
+pdf("pics/c2.pdf")
+graphviz.plot(gc2, main = "Canada Time 2")
+dev.off()
+rm(c2, gc2)
+
+s <- data.frame(read.csv("ds/s.csv"))
+s[] <- lapply(s, function(x) if(is.integer(x)) as.numeric(x) else x)
+gs <- tabu(s, blacklist = bl)
+pdf("pics/s.pdf")
+graphviz.plot(gs, main = "Spain Full")
+dev.off()
+rm(s, gs)
+
+s1 <- data.frame(read.csv("ds/s1.csv"))
+s1[] <- lapply(s1, function(x) if(is.integer(x)) as.numeric(x) else x)
+gs1 <- tabu(s1)
+pdf("pics/s1.pdf")
+graphviz.plot(gs1, main = "Spain Time 1")
+dev.off()
+rm(s1, gs1)
+
+s2 <- data.frame(read.csv("ds/s2.csv"))
+s2[] <- lapply(s2, function(x) if(is.integer(x)) as.numeric(x) else x)
+gs2 <- tabu(s2)
+pdf("pics/s2.pdf")
+graphviz.plot(gs2, main = "Spain Time 2")
+dev.off()
+rm(s2, gs2)
+
+rm(bl)
